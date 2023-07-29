@@ -1,0 +1,32 @@
+version: '3.1'
+
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: p@ssw0rd
+      POSTGRES_DB: book
+    ports:
+      - "5432:5432"
+    networks:
+      - spring-postgres
+    volumes:
+      - postgres_dev:/var/lib/postgresql/data
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    environment:
+      - POSTGRES_DB=example
+    networks:
+      - spring-postgres
+
+volumes:
+  postgres_dev:
+
+networks:
+  spring-postgres:
