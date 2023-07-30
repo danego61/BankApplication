@@ -5,8 +5,8 @@ services:
     image: postgres
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: p@ssw0rd
-      POSTGRES_DB: book
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: bank
     ports:
       - "5432:5432"
     networks:
@@ -21,7 +21,7 @@ services:
     ports:
       - 8080:8080
     environment:
-      - POSTGRES_DB=example
+      - "SPRING_PROFILES_ACTIVE=docker"
     networks:
       - spring-postgres
 
