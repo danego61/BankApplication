@@ -1,0 +1,7 @@
+resilience4j:
+  ratelimiter:
+    configs:
+      default:
+        limitForPeriod: 10
+        limitRefreshPeriod: 10m
+        timeoutDuration: 100ms
